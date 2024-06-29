@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, Subscription, interval } from 'rxjs';
 import { TransactionsService } from 'src/app/core/services/transactions.service';
 import { ClientType } from 'src/app/core/types/ClientType';
 
@@ -15,6 +16,7 @@ export class ClientsComponent {
   spin: boolean = false;
   public msgError!: string;
   isInterval = false;
+  public interval!: Subscription;
 
   clients: ClientType[] = [];
 
@@ -22,11 +24,22 @@ export class ClientsComponent {
 
   ngOnInit(): void {}
 
-  loadClient(searchValue: string = this.valueSearch): void {
+  loadClient(
+    searchValue: string = this.valueSearch,
+    cancelInterval: boolean = false
+  ): void {
     this.valueSearch = searchValue;
 
+    if (cancelInterval) {
+      this.isInterval = false;
+
+      if (this.interval) {
+        this.interval.unsubscribe();
+      }
+    }
+
     if (this.isInterval) {
-      setInterval(() => {
+      this.interval = interval(5000).subscribe(() => {
         this.transactionsService.getByCpf(searchValue).subscribe(
           (res) => {
             this.clients = res.data;
@@ -36,10 +49,11 @@ export class ClientsComponent {
             this.isInterval = false;
           }
         );
-      }, 5000);
+      });
 
       return;
     }
+
     this.spin = true;
 
     this.transactionsService.getByCpf(searchValue).subscribe(
