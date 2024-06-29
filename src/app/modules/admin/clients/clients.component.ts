@@ -39,7 +39,9 @@ export class ClientsComponent {
     }
 
     if (this.isInterval) {
-      this.interval = interval(5000).subscribe(() => {
+      const SECONDS = 3 * 1000;
+
+      this.interval = interval(SECONDS).subscribe(() => {
         this.transactionsService.getByCpf(searchValue).subscribe(
           (res) => {
             this.clients = res.data;
