@@ -33,8 +33,7 @@ export class ClientsComponent {
             this.spin = false;
           },
           () => {
-            this.msgError = 'Cliente não encontrado';
-            this.clients = [];
+            this.isInterval = false;
           }
         );
       }, 5000);
