@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/client/client.module').then((m) => m.ClientModule),
   },
-  //{ path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

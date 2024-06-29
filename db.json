@@ -1,0 +1,22 @@
+{
+    "cliente":
+    {
+        "success": true,
+        "message": "Login realizado com sucesso",
+        "data": {
+            "access_token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ2aXJ0dWFsLXN0b3JlIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiZXhwIjoxNzE5Njc2MTU5LCJpYXQiOjE3MTk2NzU4NTksInJvbGVzIjpbIkNMSUVOVEUiXX0.SInr3lq_RwFcZ7GThJ_lL22cWD7xucU-wEVjjGFdCcv9SpuGYIhCtKSQN_h4-KOYPsibTUyY7cq2nKIyvSy5UlbEBgRFdqK4MbMz-f4dbh5_9S8_K-2767I0mrFU8276rkv9f7PSzaaKdsLCGRzrQghHErRkMKKdXZXKnhxW9le33baVLZLPC2rIxkoQ_wxxc5lCHt_nQHT1QfBBo3gTQ9IQQsG0FWJ1mKqwFuWPnaCib3BVEE_-eoeEGy2AYn0hCz4O1eiTCZmimbR4ZRAD_flWg3Bg6Mi_RQjfUk8mLoEPGNXVUMDBxc-j8WejOKCyQ1kVEewiQ7X4Fd6KTtWrCg",
+            "refresh_token": "BalRvF2Z1jj_ixUEmqr58IF4qf_XgR1W",
+            "expires_in": 300
+        }
+    },
+    "admin":
+    {
+        "success": true,
+        "message": "Login realizado com sucesso",
+        "data": {
+            "access_token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ2aXJ0dWFsLXN0b3JlIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiZXhwIjoxNzE5Njc2MTg5LCJpYXQiOjE3MTk2NzU4ODksInJvbGVzIjpbIkFETUlOIl19.i6NV3eoaCXPyKMZGVlS7aoc8ffvYTgTuyxYL-jCnSnhAdnjED1S8pXN3VyvYmnRnM3qsrTSQeXc9MZZcOSeGYTQz-mPtkSB-Assrd5UsjjhGIiC0goujbZ4au3q3rn5-L99wgIqoMdM5dzHAarfMYl_FUS7Mj7PHS-oJCgoKjiYR75ZXSxkQJEv144fI8LJWpqKYy-VSHBJAFfndBeZf7dh0daBuQwfSEOgL40euK8b5mn6Eec3d9ppgIDfScn9Lg34USHYKs21WZP5rzA5rCnfGleEaclnN6SN0-Z4v3SOmoIQaOMuEDxvItZjY_x5a_j2DMvGqooJ_td2o6_-OfQ",
+            "refresh_token": "DPIt4QxU86LU6kLHClgNEQlPcZ6l91uK",
+            "expires_in": 300
+        }
+    }
+}
