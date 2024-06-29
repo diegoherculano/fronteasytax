@@ -1,0 +1,16 @@
+<form class="flex w-full md:w-auto" (ngSubmit)="onSearch()">
+  <input
+    [(ngModel)]="valueSearch"
+    name="valueSearch"
+    type="text"
+    class="rounded-l-lg text-sm border-none focus:ring-0 focus:outline-none flex-grow"
+    placeholder="Buscar"
+  />
+  <button
+    [disabled]="spin"
+    type="submit"
+    class="flex text-white bg-indigo-500 hover:bg-opacity-80 text-sm rounded-r-lg p-2 disabled:opacity-50"
+  >
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </button>
+</form>

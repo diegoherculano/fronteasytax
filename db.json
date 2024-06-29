@@ -18,5 +18,15 @@
             "refresh_token": "DPIt4QxU86LU6kLHClgNEQlPcZ6l91uK",
             "expires_in": 300
         }
-    }
+    },
+    "clientes": [
+        {
+            "_id": "6680136d894fa4001f05ac76",
+            "name": "João da Silva Teste",
+            "cpf": "012345678901",
+            "valor": 10,
+            "app_name": "EasyTax",
+            "__v": 0
+        }
+    ]
 }

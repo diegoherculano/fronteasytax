@@ -1,1 +1,75 @@
-<app-navbar title="Clientes"> Clients works! </app-navbar>
+<app-navbar title="Clientes">
+  <div
+    class="pr-2 pl-2 flex flex-col md:flex-row justify-between md:items-center"
+  >
+    <app-input-search
+      [spin]="spin"
+      [valueSearch]="valueSearch"
+      (search)="({})"
+    ></app-input-search>
+
+    <div class="mt-2 md:mt-0">
+      <app-button-primary routerLink="/admin/clients/register">
+        Cadastrar
+      </app-button-primary>
+    </div>
+  </div>
+
+  <div class="min-w-full overflow-x-auto">
+    <table class="min-w-full text-sm text-left">
+      <thead>
+        <tr class="border-b">
+          <th class="py-3 px-6 font-semibold text-black">Nome</th>
+          <th class="py-3 px-6 font-semibold text-black">CPF</th>
+          <th class="py-3 px-6 font-semibold text-black"></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="spin" class="spin">
+        <tr>
+          <td colspan="3" class="p-2">
+            <app-input-spin
+              class="flex justify-center"
+              [textBlack]="true"
+            ></app-input-spin>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!spin" class="text-gray-600">
+        <tr
+          class="border-b"
+          *ngFor="
+            let client of clients
+              | paginate
+                : {
+                    id: 'clients',
+                    itemsPerPage: pageSize,
+                    currentPage: currentPage,
+                    totalItems: totalItems
+                  }
+          "
+        >
+          <td class="py-3 px-6 font-semibold text-black">
+            {{ client.name }}
+          </td>
+          <td class="py-3 px-6 text-gray-600">{{ client.cpf }}</td>
+          <td class="py-3 px-6 text-right">
+            <button
+              class="text-blue-500 hover:text-blue-700 cursor-pointer"
+              routerLink="/admin/clients/edit/{{ client._id }}"
+            >
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <app-pagination
+      [currentPage]="currentPage"
+      [pageSize]="pageSize"
+      [totalItems]="totalItems"
+      (pageChanged)="pageChanged($event)"
+      title="clients"
+    ></app-pagination>
+  </div>
+</app-navbar>

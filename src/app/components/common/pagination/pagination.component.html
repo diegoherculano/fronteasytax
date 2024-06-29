@@ -1,0 +1,79 @@
+<pagination-template
+  #p="paginationApi"
+  [id]="title"
+  (pageChange)="onPageChange($event)"
+>
+  <div class="sm:flex mt-4">
+    <div>
+      <nav
+        class="custom-pagination isolate inline-flex -space-x-px rounded-md shadow-sm"
+        aria-label="Pagination"
+      >
+        <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+          <button
+            [disabled]="p.isFirstPage()"
+            class="cursor-pointer relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-default"
+            (click)="p.previous()"
+          >
+            <span class="sr-only">Retornar</span>
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div
+          *ngFor="let page of p.pages"
+          [class.current]="p.getCurrent() === page.value"
+        >
+          <button
+            class="disabled:opacity-50 disabled:cursor-default cursor-pointer relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            (click)="p.setCurrent(page.value)"
+            *ngIf="p.getCurrent() !== page.value"
+          >
+            <span>{{ page.label }}</span>
+          </button>
+
+          <button
+            aria-current="page"
+            class="disabled:opacity-50 disabled:cursor-default cursor-pointer relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            *ngIf="p.getCurrent() === page.value"
+          >
+            {{ page.label }}
+          </button>
+        </div>
+
+        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+          <button
+            [disabled]="p.isLastPage()"
+            class="disabled:opacity-50 disabled:cursor-default cursor-pointer relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            (click)="p.next()"
+          >
+            <span class="sr-only">Avançar</span>
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</pagination-template>

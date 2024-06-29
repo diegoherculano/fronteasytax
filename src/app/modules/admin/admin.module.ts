@@ -5,17 +5,19 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ClientsComponent } from './clients/clients.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    NavbarComponent,
-    ClientsComponent
-  ],
+  declarations: [HomeComponent, NavbarComponent, ClientsComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
-  ]
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    FormsModule,
+    ComponentsModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

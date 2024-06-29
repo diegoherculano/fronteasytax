@@ -1,0 +1,44 @@
+<div
+  class="block max-w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+>
+  <app-input-spin
+    *ngIf="spin"
+    class="flex justify-center"
+    [textBlack]="true"
+  ></app-input-spin>
+  <div *ngIf="!spin">
+    <p class="font-normal text-gray-700">{{ title }}</p>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+      {{ content }}
+    </h5>
+    <div
+      *ngIf="moreInfo"
+      class="grid border-t pt-2 border-gray-900/10 grid-cols-2"
+    >
+      <div>
+        <div
+          class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"
+        >
+          {{ moreInfo.firstInfo.title }}
+        </div>
+        <div
+          class="leading-none text-xl font-bold text-green-500 dark:text-green-400"
+        >
+          {{ moreInfo.firstInfo.content }}
+        </div>
+      </div>
+      <div>
+        <div
+          class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"
+        >
+          {{ moreInfo.secondInfo.title }}
+        </div>
+        <div
+          class="leading-none text-xl font-bold text-red-600 dark:text-red-500"
+        >
+          {{ moreInfo.secondInfo.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
