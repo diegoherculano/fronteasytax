@@ -13,6 +13,7 @@ export class ClientsComponent {
   pageSize: number = 5;
   totalItems: number = 0;
   spin: boolean = false;
+  public msgError!: string;
 
   clients: ClientType[] = [];
 
@@ -22,13 +23,28 @@ export class ClientsComponent {
 
   loadClient(searchValue: string = this.valueSearch): void {
     this.valueSearch = searchValue;
+    this.spin = true;
 
-    this.transactionsService.getByCpf(searchValue).subscribe((res) => {
-      this.clients = res.data;
-    });
+    this.transactionsService.getByCpf(searchValue).subscribe(
+      (res) => {
+        this.clients = res.data;
+        this.spin = false;
+      },
+      () => {
+        this.msgError = 'Cliente não encontrado';
+        this.clients = [];
+      }
+    );
   }
 
   pageChanged(event: number): void {
     this.currentPage = event;
+  }
+
+  onModalCloseClick(close: boolean) {
+    if (close) {
+      this.spin = false;
+      this.msgError = '';
+    }
   }
 }

@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { ClientService } from 'src/app/core/services/client.service';
 
 @Component({
@@ -26,17 +25,16 @@ export class SignupComponent {
   ) {
     this.formAuth = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.min(6)]],
-      confirmPassword: ['', [Validators.required, Validators.min(6)]],
-      role: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.min(3)]],
+      confirmPassword: ['', [Validators.required, Validators.min(3)]],
     });
 
     this.formAuth
       .get('confirmPassword')
       ?.setValidators([
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(3),
         this.matchPasswords.bind(this),
       ]);
   }
@@ -51,6 +49,13 @@ export class SignupComponent {
   public submitForm() {
     if (this.formAuth.valid) {
       this.spin = true;
+
+      this.clienteService.create(this.formAuth.value).subscribe({
+        next: (res) => {
+          return (this.msgSuccess = 'Cadastro salvo.');
+        },
+        error: (e) => (this.msgError = e),
+      });
     }
   }
 

@@ -1,4 +1,10 @@
 <app-navbar title="Minhas Transações">
+  <div *ngIf="spin" class="spin">
+    <app-input-spin
+      class="flex justify-center"
+      [textBlack]="true"
+    ></app-input-spin>
+  </div>
   <div *ngIf="clients.length" class="min-w-full overflow-x-auto">
     <table class="min-w-full text-sm text-left">
       <thead>
@@ -48,5 +54,11 @@
       (pageChanged)="pageChanged($event)"
       title="clients"
     ></app-pagination>
+  </div>
+  <div *ngIf="msgError">
+    <app-modal
+      [content]="msgError"
+      (close)="onModalCloseClick($event)"
+    ></app-modal>
   </div>
 </app-navbar>

@@ -9,6 +9,13 @@
     ></app-input-search>
   </div>
 
+  <div *ngIf="spin" class="spin">
+    <app-input-spin
+      class="flex justify-center"
+      [textBlack]="true"
+    ></app-input-spin>
+  </div>
+
   <div *ngIf="clients.length" class="min-w-full overflow-x-auto">
     <table class="min-w-full text-sm text-left">
       <thead>
@@ -17,16 +24,6 @@
           <th class="py-3 px-6 font-semibold text-black">Valor</th>
         </tr>
       </thead>
-      <tbody *ngIf="spin" class="spin">
-        <tr>
-          <td colspan="3" class="p-2">
-            <app-input-spin
-              class="flex justify-center"
-              [textBlack]="true"
-            ></app-input-spin>
-          </td>
-        </tr>
-      </tbody>
       <tbody *ngIf="!spin" class="text-gray-600">
         <tr
           class="border-b"
@@ -58,5 +55,11 @@
       (pageChanged)="pageChanged($event)"
       title="clients"
     ></app-pagination>
+  </div>
+  <div *ngIf="msgError">
+    <app-modal
+      [content]="msgError"
+      (close)="onModalCloseClick($event)"
+    ></app-modal>
   </div>
 </app-navbar>
