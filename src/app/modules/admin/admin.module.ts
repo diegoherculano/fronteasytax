@@ -8,6 +8,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { NgxMaskPipe } from 'ngx-mask';
 
 @NgModule({
   declarations: [HomeComponent, NavbarComponent, ClientsComponent],
@@ -18,6 +19,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     NgxPaginationModule,
     FormsModule,
     ComponentsModule,
+    NgxMaskPipe,
   ],
 })
 export class AdminModule {}

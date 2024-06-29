@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/client/client.module').then((m) => m.ClientModule),
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login', pathMatch: 'full' },
 ];
 
 @NgModule({

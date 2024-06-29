@@ -6,10 +6,21 @@ import { SignComponent } from './sign/sign.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { SignupComponent } from './signup/signup.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
-  declarations: [SignComponent],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
+  declarations: [SignComponent, SignupComponent],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    NgxMaskPipe,
+    NgxMaskDirective,
+    ComponentsModule,
+  ],
+  providers: [provideNgxMask()],
 })
 export class AuthModule {
   constructor(private authService: AuthService, private router: Router) {

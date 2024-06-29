@@ -16,7 +16,7 @@ export class SignComponent {
   ) {}
 
   public formAuth: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
+    cpf: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
 
@@ -25,7 +25,7 @@ export class SignComponent {
       this.spin = true;
       this.authService
         .signIn({
-          login: this.formAuth.value.email,
+          cpf: this.formAuth.value.cpf,
           password: this.formAuth.value.password,
         })
         .subscribe({

@@ -1,8 +1,7 @@
 export type ClientType = {
   _id: string;
-  name: string;
   cpf: string;
-  valor: number;
+  valor: number | string;
   app_name: string;
   __v: number;
 };
